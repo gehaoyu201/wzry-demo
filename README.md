@@ -31,6 +31,22 @@ module.exports = {
 }
 在server目录下的index.js定义一个静态文件托管
 
+买服务器
+ssh root@服务器公网IP
+服务器配置：
+apt update
+apt install nginx -y
+apt install mongodb-server -y
+apt install -y nodejs
+apt install -y npm
+npm i nrm -g 用户切换npm和淘宝镜像
+npm i -g n
+n latest
+apt install git -y
+npm i
+npm i pm2 -g
+pm2 start index.js
 
 
+mongodump -d wzry
 
