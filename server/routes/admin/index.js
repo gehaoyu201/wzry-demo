@@ -53,7 +53,7 @@ module.exports = app => {
     app.post('/admin/api/upload', authMiddleware(), upload.single('file'), async (req, res) => {
         //upload.single('file')将上传文件的file赋值到req上面去了
         const file = req.file
-        file.url = `http://www.nezuko.top/uploads/${file.filename}`
+        file.url = `http://nezuko.top/uploads/${file.filename}`
         res.send(file)
     })
 
