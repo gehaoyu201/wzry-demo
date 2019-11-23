@@ -1,0 +1,1075 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+img {
+	border: 0;
+	vertical-align: middle;
+}
+
+ul,
+ol,
+dl {
+	list-style: none;
+}
+
+html,
+body {
+	height: 100%;
+	background: #fff;
+}
+
+body {
+	font-size: 0.12rem;
+	font-family: arial, "Microsoft YaHei", simsun;
+}
+
+.ht,
+.raiders-vdbtn .vdbtn-left span {
+	overflow: hidden;
+	text-indent: -9999em;
+}
+
+.hide {
+	width: 0;
+	height: 0;
+	display: block;
+	text-indent: -9999rem;
+	overflow: hidden;
+}
+
+.pa {
+	position: absolute;
+}
+
+.pr {
+	position: relative;
+}
+
+i {
+	display: block;
+	font-style: normal;
+}
+
+.l {
+	float: left;
+}
+
+.r {
+	float: right;
+}
+
+.c:after,
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.c,
+.clearfix {
+	zoom: 1;
+}
+
+a {
+	text-decoration: none;
+}
+
+.header-hero {
+	width: 100%;
+	height: 3.82rem;
+	position: relative;
+	margin-top: .88rem;
+}
+
+.header-hero:after {
+	content: '';
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/bt.png);
+	background-size: contain;
+}
+
+.header-hero img {
+	width: 100%;
+	height: 100%;
+}
+
+.header-hero .hero-attribute {
+	position: absolute;
+	bottom: 0;
+	left: .3rem;
+	height: 1.78rem;
+	width: 6.92rem;
+	z-index: 1;
+}
+
+@-webkit-keyframes txtshow {
+	from {
+		opacity: 0;
+		transform: translateX(-100px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes txtshow {
+	from {
+		opacity: 0;
+		transform: translateX(-100px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.header-hero .hero-attribute p {
+	padding-bottom: .11rem;
+	color: #fff;
+	-webkit-animation: txtshow .5s;
+	animation: txtshow 1s;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	opacity: 0;
+}
+
+.header-hero .hero-attribute .hero-name {
+	animation-delay: .2s;
+}
+
+.header-hero .hero-attribute .hero-location {
+	animation-delay: .4s;
+}
+
+.header-hero .hero-title,
+.header-hero .hero-location {
+	height: .22rem;
+	line-height: .22rem;
+	font-size: .22rem;
+}
+
+.header-hero .hero-name {
+	height: .34rem;
+	line-height: .34rem;
+	font-size: .34rem;
+	font-weight: bold;
+}
+
+.header-hero .cover-list {
+	float: left;
+}
+
+@-webkit-keyframes lishow {
+	from {
+		opacity: 0;
+		transform: translateX(-100px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes lishow {
+	from {
+		opacity: 0;
+		transform: translateX(-100px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.header-hero .cover-list li {
+	float: right;
+	width: .81rem;
+	margin-right: .34rem;
+	color: #ffffff;
+	font-size: .24rem;
+	line-height: .24rem;
+	height: .24rem;
+	-webkit-animation: lishow .5s .5s;
+	animation: lishow .5s .5s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+	opacity: 0;
+}
+
+.header-hero .cover-list li:nth-child(1) {
+	-webkit-animation-delay: 1.1s;
+	animation-delay: 1.1s;
+}
+
+.header-hero .cover-list li:nth-child(2) {
+	-webkit-animation-delay: .9s;
+	animation-delay: .9s;
+}
+
+.header-hero .cover-list li:nth-child(3) {
+	-webkit-animation-delay: .7s;
+	animation-delay: .7s;
+}
+
+.header-hero .cover-list li span {
+	display: inline-block;
+	width: .37rem;
+	height: .37rem;
+	vertical-align: middle;
+	margin: -0.07rem -0.1rem 0 -1rem;
+	transform: scale(.66);
+	float: right;
+}
+
+/*.header-hero .cover-list li .cnver1 {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/cnver1.png) no-repeat 0 0;
+	background-size: .24rem .24rem;
+}
+
+.header-hero .cover-list li .cnver2 {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/cnver2.png) no-repeat 0 0;
+	background-size: .24rem .24rem;
+}
+
+.header-hero .cover-list li .cnver3 {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/cnver3.png) no-repeat 0 0;
+	background-size: .24rem .24rem;
+}
+
+.header-hero .cover-list li .cnver4 {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/cnver4.png) no-repeat 0 0;
+	background-size: .24rem .24rem;
+}*/
+
+.header-hero .hero-skin {
+	position: relative;
+	float: right;
+	font-size: .22rem;
+	color: #b6afa8;
+	margin-top: -4px;
+	padding-right: 0.2rem;
+}
+
+.header-hero .hero-skin:after {
+	content: '';
+	display: inline-block;
+	width: 6px;
+	height: 10px;
+	position: absolute;
+	top: 50%;
+	margin-top: -4px;
+	right: -2px;
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/skin-link.png) no-repeat;
+	background-size: contain;
+}
+
+.header-hero .hero-skin span {
+	padding-right: .1rem;
+}
+
+.content-hero {
+	border-top: 1px solid #d4d9de;
+}
+
+.hero-nav {
+	display: -webkit-box;
+	display: box;
+	width: 7.02rem;
+	margin: 0 auto;
+	padding: .24rem 0 .15rem 0;
+	border-bottom: 1px solid #d4d9de;
+}
+
+.content-hero .hero-nav li {
+	-webkit-box-flex: 1;
+	box-flex: 1;
+	text-align: center;
+	font-size: .26rem;
+	height: .34rem;
+	line-height: .34rem;
+	color: #000;
+	margin: 0 .48rem;
+	float: none;
+}
+
+.content-hero .hero-nav li:first-child {
+	margin-left: 0;
+}
+
+.content-hero .hero-nav .current a{
+	width: auto;
+	color: #d59b40;
+	border-bottom: .04rem solid #d59b40;
+}
+
+.hero-video {
+	padding: .18rem 0 .26rem 0;
+	width: 7.02rem;
+	margin: 0 auto;
+}
+
+.hero-video a {
+	position: relative;
+	height: .74rem;
+	line-height: .74rem;
+	color: #343440;
+	font-size: .26rem;
+	display: inline-block;
+	background-color: #fcfcfc;
+	width: 3.4rem;
+	border-radius: .1rem;
+	border: 1px solid #eceef0;
+	text-align: center;
+	text-indent: .6rem;
+}
+
+.hero-video .video-play {
+	margin-right: .068rem;
+}
+
+.hero-video .video-play:before {
+	content: '';
+	position: absolute;
+	left: .65rem;
+	top: 50%;
+	margin-top: -.2rem;
+	display: inline-block;
+	/* padding-left: 1.31rem; */
+	width: .4rem;
+	height: .4rem;
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/icon_06.png) no-repeat;
+	background-size: contain;
+	/* background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/icon_06.png) no-repeat 0.87rem 0.23rem; */
+	/* background-size: .4rem; */
+}
+
+.hero-video .voice-play:before {
+	content: '';
+	position: absolute;
+	left: .6rem;
+	top: 50%;
+	margin-top: -.19rem;
+	display: inline-block;
+	width: .38rem;
+	height: .38rem;
+	/* padding-left: 1.55rem; */
+	width: 2.05rem;
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/icon_07.png) no-repeat;
+	background-size: contain;
+	/* background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/icon_07.png) no-repeat 1.1rem 0.23rem; */
+	background-size: .38rem .38rem;
+}
+
+.tit1 {
+	font-size: .32rem;
+	font-weight: bold;
+	line-height: .34rem;
+	height: .34rem;
+	padding-left: .39rem;
+	padding-bottom: .25rem;
+}
+
+.ic8 {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/icon_08.png) no-repeat 0 0.02rem;
+	background-size: .26rem .26rem;
+}
+
+.ic9 {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/icon_05.png) no-repeat 0 0.02rem;
+	background-size: .26rem .26rem;
+}
+
+.ic10 {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/icon_10.png) no-repeat 0 0.02rem;
+	background-size: .26rem .26rem;
+}
+
+.ic11 {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/icon_11.png) no-repeat 0 0.02rem;
+	background-size: .26rem .26rem;
+}
+
+.ic12 {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/icon_12.png) no-repeat 0 0.02rem;
+	background-size: .26rem .26rem;
+}
+
+.ic13 {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/icon_13.png) no-repeat 0 0.02rem;
+	background-size: .26rem .26rem;
+}
+
+.ic14 {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/icon_14.png) no-repeat 0 0.02rem;
+	background-size: .26rem .26rem;
+}
+
+.ic15 {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/icon_15.png) no-repeat 0 0.02rem;
+	background-size: .26rem .26rem;
+}
+
+.ic16 {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/icon_16.png) no-repeat 0 0.02rem;
+	background-size: .26rem .26rem;
+}
+
+.tit2 {
+	color: #343440;
+	font-size: .3rem;
+	padding-bottom: .25rem;
+	line-height: .28rem;
+	height: .28rem;
+}
+
+.brn {
+	border-bottom: none !important;
+	margin-bottom: 0 !important;
+	margin-top: 0 !important;
+}
+
+.brf {
+	border-bottom: .19rem solid #ededed !important;
+}
+
+.brtn {
+	border-top: 0 !important;
+}
+
+.brbn {
+	border-bottom: 0 !important;
+}
+
+.more-btn {
+	display: block;
+	width: 100%;
+	height: .67rem;
+	background-color: #f4f4f4;
+	line-height: .67rem;
+	text-align: center;
+	color: #7a7a80;
+	font-size: .24rem;
+	border-top: 1px solid #eeeeee;
+	border-bottom: 1px solid #d4d9de;
+	margin-top: .2rem;
+}
+
+.more-btn span {
+	color: #d59b40;
+}
+
+.autom {
+	width: 7.02rem;
+	margin: .3rem auto 0 auto;
+	overflow: hidden;
+}
+
+.panel {
+	border-top: .22rem solid #ededed;
+	border-bottom: 1px solid #d4d9de;
+}
+
+.rela-list {
+	border-bottom: 1px solid #d4d9de;
+	margin-bottom: .2rem;
+}
+
+.rela-list li {
+	padding-bottom: .3rem;
+}
+
+.rela-list li:after,
+.rela-list .clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.rela-list li,
+.rela-list .clearfix {
+	zoom: 1;
+}
+
+.rela-list .rela-img {
+	width: .96rem;
+	height: .96rem;
+	display: block;
+	border-radius: 3px;
+	float: left;
+}
+
+.rela-list .rela-text {
+	float: right;
+	color: #343440;
+	font-size: .26rem;
+	line-height: .4rem;
+	width: 5.86rem;
+	padding-top: .05rem;
+}
+
+.hero-story {
+	height: 3rem;
+}
+
+.hero-story p {
+	line-height: .42rem;
+	color: #343440;
+	font-size: .26rem;
+	text-indent: 2em;
+}
+
+.rd-video-info {
+	padding-top: .4rem;
+}
+
+.rd-video-tm {
+	padding-left: .29rem;
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/video-tm.png) no-repeat;
+	background-size: .20rem .20rem;
+	float: left;
+}
+
+.rd-video-spr {
+	display: block;
+	line-height: .2rem;
+	height: .2rem;
+	color: #7a7a80;
+	font-size: .2rem;
+}
+
+.rd-video-fre {
+	padding-left: .31rem;
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/video-fre.png) no-repeat;
+	background-size: .24rem .18rem;
+	margin-right: .31rem;
+	float: left;
+}
+
+.rd-video-day {
+	float: right;
+}
+
+.raiders-list {
+	width: 7.02rem;
+	margin: 0 auto;
+}
+
+.raiders-list li {
+	padding: .23rem 0;
+	border-bottom: 1px solid #d4d9de;
+}
+
+.raiders-list li:last-child {
+	border-bottom: none;
+}
+
+.raiders-vdbtn {
+	position: relative;
+	display: block;
+}
+
+.raiders-vdbtn.rec-item:before {
+	content: '';
+	display: block;
+	width: .52rem;
+	height: .26rem;
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/rec-icon.png) no-repeat;
+	background-size: cover;
+	position: absolute;
+	top: .05rem;
+	left: .05rem;
+	z-index: 1;
+}
+
+.raiders-vdbtn .vdbtn-left {
+	position: relative;
+	float: left;
+	width: 2.32rem;
+	height: 1.29rem;
+}
+
+.raiders-vdbtn .vdbtn-left img {
+	width: 100%;
+	height: 100%;
+	border-radius: 2px;
+}
+
+.raiders-vdbtn .vdbtn-left span {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/video-img.png) no-repeat 0.83rem 0.33rem;
+	background-size: .64rem .64rem;
+}
+
+.raiders-vdbtn .vdbtn-left em {
+	display: block;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: .42rem;
+	height: .19rem;
+	background-color: #17c9ef;
+	color: #fff;
+	font-size: .14rem;
+	line-height: .19rem;
+	font-style: normal;
+}
+
+.raiders-vdbtn .vdbtn-right {
+	float: right;
+	width: 4.4rem;
+}
+
+.raiders-vdbtn .vdbtn-right p {
+	color: #343440;
+	line-height: .33rem;
+	font-size: .26rem;
+	height: .66rem;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.content-skin {
+	position: relative;
+	width: 100%;
+	padding-top: 45px;
+	margin-top: 0.1rem;
+}
+
+.content-skin .skin-list {
+	width: 7.27rem;
+	height: 11.82rem;
+}
+
+.content-skin .skin-box {
+	width: 7.27rem;
+	margin: 0 auto;
+}
+
+.content-skin .skin-box li {
+	width: 7.27rem;
+	height: 11.82rem;
+	position: relative;
+}
+
+.content-skin .skin-video {
+	height: 10.71rem;
+	background-color: #161725;
+}
+
+.content-skin .skin_name {
+	width: 100%;
+	height: .26rem;
+	line-height: .26rem;
+	color: #343440;
+	font-size: .26rem;
+	text-align: center;
+	position: absolute;
+	bottom: .5rem;
+	left: 50%;
+	margin-left: -50%;
+	padding-top: .7rem;
+	z-index: 9;
+}
+
+.content-skin .controller {
+	position: absolute;
+	bottom: .05rem;
+	left: 50%;
+	margin-left: -50%;
+	z-index: 10;
+	font-size: 0;
+	text-align: center;
+	height: .24rem;
+	width: 100%;
+}
+
+.content-skin .controller li {
+	display: inline-block;
+	width: .2rem;
+	height: .1rem;
+	background-color: #bababa;
+	margin: 0 .05rem;
+	border-radius: .05rem;
+	transition: width 0.5s;
+	-webkit-transition: width 0.5s;
+	text-indent: -9999em;
+}
+
+.content-skin .controller li.current {
+	width: .3rem;
+	background-color: #161725;
+}
+
+.content-skin .skin_btn {
+	font-size: .5rem;
+	font-weight: bold;
+	position: absolute;
+	top: 3.2rem;
+	width: .22rem;
+	height: .38rem;
+}
+
+.content-skin .prev_btn {
+	left: .2rem;
+	background-position: -4.56rem -.48rem;
+}
+
+.content-skin .next_btn {
+	right: .2rem;
+	background-position: -5.37rem -.86rem;
+}
+
+.brt {
+	border-top: .19rem solid #ededed;
+}
+
+.ptn {
+	padding: 0 0 .2rem 0 !important;
+}
+
+.brm {
+	border-bottom: .19rem solid #ededed;
+}
+
+.prompt {
+	padding: .26rem 0 .42rem 0;
+	color: #7a7a80;
+	font-size: .26rem;
+	line-height: .4rem;
+}
+
+.skills-build {
+	border-bottom: 1px solid #d4d9de;
+	margin-bottom: .26rem;
+}
+
+.skills-build .build-list {
+	display: -webkit-box;
+	display: box;
+	text-align: center;
+}
+
+.skills-build .build-list li {
+	-webkit-box-flex: 1;
+	box-flex: 1;
+	text-align: center;
+}
+
+.skills-build .build-list li span {
+	display: inline-block;
+	-webkit-box-flex: 1;
+	box-flex: 1;
+}
+
+.skills-build .build-list li .build-img,
+.skills-build .build-list li .build-img img {
+	width: .93rem;
+	height: .93rem;
+	border-radius: .46rem;
+}
+
+.skills-build .build-list li .build-name {
+	width: 1.1rem;
+	color: #343440;
+	font-size: .18rem;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	line-height: .26rem;
+	height: .26rem;
+	margin-top: .1rem;
+}
+
+.rune-list {
+	overflow: hidden;
+}
+
+.rune-cont {
+	padding-bottom: .27rem;
+	float: left;
+	width: 33.3333%;
+}
+
+.rune-cont dt,
+.rune-cont img {
+	width: .67rem;
+	height: .79rem;
+	float: left;
+}
+
+.rune-cont dd {
+	float: left;
+	margin-left: 9%;
+}
+
+.rune-cont .rp1 {
+	color: #343440;
+	font-size: .3rem;
+	line-height: .3rem;
+	height: .3rem;
+	padding: .05rem 0 .05rem 0;
+}
+
+.rune-cont .rp2 {
+	color: #7a7a80;
+	font-size: .26rem;
+	line-height: .4rem;
+}
+
+.rune-cont .rp2 span {
+	padding-right: .37rem;
+}
+
+.use-skills {
+	color: #343440;
+	font-size: .26rem;
+	line-height: .4rem;
+	padding-bottom: .11rem;
+}
+
+.plus-tab {
+	width: 100%;
+	overflow: hidden;
+	height: 1.3rem;
+	-webkit-transition: -webkit-transform ease-in-out 0.6s;
+	transition: -webkit-transform ease-in-out 0.6s;
+	transition: transform ease-in-out 0.6s;
+	transition: transform ease-in-out 0.6s, -webkit-transform ease-in-out 0.6s;
+	display: flex;
+	display: -webkit-flex;
+}
+
+.plus-tab li {
+	float: left;
+	width: 1.2rem;
+	height: 1.2rem;
+	/*border: .05rem solid #fff;*/
+	border-radius: .56rem;
+	display: inline-block;
+	margin: 0 .12rem;
+	flex: 1;
+}
+
+.plus-tab li img {
+	width: 1.2rem;
+	height: 1.2rem;
+	border: .05rem solid transparent;
+	border-radius: .58rem;
+	margin: 0 auto;
+}
+
+.plus-tab li.current img {
+	border: .05rem solid #d59b40;
+	border-radius: .58rem;
+}
+
+.plus-control {
+	display: none;
+}
+
+.plus-content {
+	padding-top: .4rem;
+}
+
+.plus-content li {
+	display: none;
+}
+
+.plus-content .plus-box span {
+	display: block;
+}
+
+.plus-content .plus-box .plus-name {
+	float: left;
+	color: #343440;
+	font-size: .3rem;
+	font-weight: bold;
+	width: 1.5rem;
+}
+
+.plus-content .plus-box .plus-value {
+	float: right;
+	font-size: .23rem;
+	color: #7a7a80;
+	line-height: .3rem;
+	width: 5.44rem;
+	padding-top: .07rem;
+}
+
+.plus-content .plus-int {
+	line-height: .4rem;
+	color: #343440;
+	font-size: .26rem;
+	padding: .38rem 0 .2rem 0;
+	border-bottom: 1px solid #d4d9de;
+}
+
+.plus-spr {
+	position: absolute;
+	height: 1.15rem;
+	width: .5rem;
+	top: 0;
+}
+
+.plus-prev {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/plus-prev.png) no-repeat right 0.1rem;
+	background-size: .28rem .97rem;
+	left: -.24rem;
+	display: none;
+}
+
+.plus-next {
+	background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/plus-next.png) no-repeat left 0.1rem;
+	background-size: .28rem .97rem;
+	right: -.24rem;
+}
+
+.plus-osal {
+	color: #343440;
+}
+
+.plus-osal .sk1 {
+	padding-left: .16rem;
+}
+
+.plus-osal .sk2 {
+	padding-left: .8rem;
+}
+
+.plus-osal .osal-box {
+	text-align: center;
+	width: 1.19rem;
+}
+
+.plus-osal .osal-box:last-child {
+	float: right;
+}
+
+.plus-osal .osal-box img {
+	width: 1.2rem;
+	height: 1.2rem;
+	display: block;
+	border-radius: .58rem;
+}
+
+.plus-osal .osal-p1,
+.plus-osal .osal-suner p {
+	display: block;
+	font-size: .3rem;
+	line-height: .3rem;
+	height: .3rem;
+	padding-bottom: .25rem;
+}
+
+.plus-osal .osal-p2 {
+	display: block;
+	color: #343440;
+	font-size: .18rem;
+	line-height: .18rem;
+	height: .18rem;
+	padding: .2rem 0 .25rem 0;
+}
+
+.plus-osal .osal-suner {
+	width: 2.58rem;
+	text-align: center;
+	padding-left: .82rem;
+}
+
+.skin-list{position: absolute;right: 0;bottom: 0;overflow: hidden;}
+.skin-list li{float: left;}
+.skin-list li i{width: 0.7rem;height: 0.7rem;margin: 0 auto;}
+.header-hero .cover-list li{margin-right: .2rem;}
+
+.load-more {background: #f4f4f4;height: 0.7rem;margin-top: -1px;border-bottom: 1px solid #d4d9de;}
+.load-more a {color: #7a7a80;font-size: 0.24rem;display: block;width: 100%;height: 100%;text-align: center;line-height: 0.7rem;}
+
+.slide-container {padding-bottom: 0;}
+.slide-container .slide-content {margin: 0;}
+
+.cover-list .hero-attrsp{background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/coming/hero-attrsp.png) no-repeat; background-size: 4rem;}
+
+.cover-list .hero-attr1-1{background-position: 0 0;}
+.cover-list .hero-attr1-2{background-position: 0 -0.41rem;}
+.cover-list .hero-attr1-3{background-position: 0 -0.82rem;}
+.cover-list .hero-attr1-4{background-position: 0 -1.23rem;}
+.cover-list .hero-attr1-5{background-position: 0 -1.64rem;}
+.cover-list .hero-attr1-6{background-position: 0 -2.05rem;}
+.cover-list .hero-attr1-7{background-position: 0 -2.46rem;}
+.cover-list .hero-attr1-8{background-position: 0 -2.87rem;}
+.cover-list .hero-attr1-9{background-position: 0 -3.28rem;}
+.cover-list .hero-attr1-10{background-position: 0 -3.69rem;}
+
+.cover-list .hero-attr2-1{background-position: -0.41rem 0;}
+.cover-list .hero-attr2-2{background-position: -0.41rem -0.41rem;}
+.cover-list .hero-attr2-3{background-position: -0.41rem -0.8rem;}
+.cover-list .hero-attr2-4{background-position: -0.41rem -1.23rem;}
+.cover-list .hero-attr2-5{background-position: -0.41rem -1.64rem;}
+.cover-list .hero-attr2-6{background-position: -0.41rem -2.05rem;}
+.cover-list .hero-attr2-7{background-position: -0.41rem -2.46rem;}
+.cover-list .hero-attr2-8{background-position: -0.41rem -2.87rem;}
+.cover-list .hero-attr2-9{background-position: -0.41rem -3.28rem;}
+.cover-list .hero-attr2-10{background-position: -0.41rem -3.69rem;}
+
+.cover-list .hero-attr3-1{background-position: -0.82rem 0;}
+.cover-list .hero-attr3-2{background-position: -0.82rem -0.41rem;}
+.cover-list .hero-attr3-3{background-position: -0.82rem -0.8rem;}
+.cover-list .hero-attr3-4{background-position: -0.82rem -1.23rem;}
+.cover-list .hero-attr3-5{background-position: -0.82rem -1.64rem;}
+.cover-list .hero-attr3-6{background-position: -0.82rem -2.05rem;}
+.cover-list .hero-attr3-7{background-position: -0.82rem -2.46rem;}
+.cover-list .hero-attr3-8{background-position: -0.82rem -2.87rem;}
+.cover-list .hero-attr3-9{background-position: -0.82rem -3.28rem;}
+.cover-list .hero-attr3-10{background-position: -0.82rem -3.69rem;}
+
+.cover-list .hero-attr4-1{background-position: -1.23rem 0;}
+.cover-list .hero-attr4-2{background-position: -1.23rem -0.41rem;}
+.cover-list .hero-attr4-3{background-position: -1.23rem -0.8rem;}
+.cover-list .hero-attr4-4{background-position: -1.23rem -1.23rem;}
+.cover-list .hero-attr4-5{background-position: -1.23rem -1.64rem;}
+.cover-list .hero-attr4-6{background-position: -1.23rem -2.05rem;}
+.cover-list .hero-attr4-7{background-position: -1.23rem -2.46rem;}
+.cover-list .hero-attr4-8{background-position: -1.23rem -2.87rem;}
+.cover-list .hero-attr4-9{background-position: -1.23rem -3.28rem;}
+.cover-list .hero-attr4-10{background-position: -1.23rem -3.69rem;}
+
+.content-list .panel:last-child {padding-bottom: .4rem;}
+.content-list:first-child  .panel:last-child {padding-bottom: 0;}
+
+.slide-container .slide-nav li:first-child,.slide-container .slide-nav li:last-child {margin: 0 .48rem;}
+
+.header-hero .hero-title {padding-top: .1rem;}
+
+.rune-cont dd p:nth-child(3),.rune-cont dd p:nth-child(4) {font-size: .18rem;}
+
+.content-list {padding-bottom: .1rem;}
+.home-top .download a {background: none; font-size: .4rem; color: #fff; text-align: right;}
+.home-top .download span {font-size: .22rem; float: left; line-height: .46rem;}
+.logo_title h1 {line-height: .6rem;}
+.home-top .download {top: .24rem; width: 1.3rem;}
+#canvas-container {width: 100%; height: 3.4453rem;}
+
+.hero-share {display: none; width: .82rem; height: .82rem; position: fixed; right: .2rem; top: 10rem; background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/share-icon.png) no-repeat; background-size: contain;}
+
+.pop-on {width: 100%; box-sizing: border-box;}
+.share-guide {position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;display: none; z-index: 20;}
+.share-guide img{width: 100%;}
+.pop-on .share-guide {display: block;}

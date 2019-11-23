@@ -1,0 +1,96 @@
+@charset "gb2312";
+
+/* CSS Document */
+
+/* ---------- init ---------- */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;word-wrap:break-word;}
+body,button,input,select,textarea{font-family:"Helvetica Neue",Helvetica,STHeiTi,'\5FAE\8F6F\96C5\9ED1',sans-serif;font-size:1rem;color:#000;}
+th{text-align:inherit;}
+ol,ul{list-style:none;}
+fieldset,img{border:0;vertical-align:middle;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+ins,a{color:#222;text-decoration:none;}
+a,img{-webkit-touch-callout:none;}
+table{border-collapse:collapse;}
+i{font-style:normal;}
+*{padding:0;margin:0;}
+.clearfix{*zoom:1}
+.clearfix:after{content:'\20';display:block;height:0;line-height:0;visibility:hidden;clear:both}
+body{min-width:320px;height:100%;width:100%;background:#F1F1F1;}
+img{width:100%;display:block}
+.clearfloat{clear:both;}
+.fl{float:left;}
+.fr{float:right;}
+.videoContline{width:100%;height:0.333rem;background:#d3d3d4}
+.warp{position:static;width:100%;background:#f1f1f1;padding-bottom:3.125rem;overflow-x:hidden;    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 640px;}
+.clearfix{*zoom:1}
+.clearfix:after{content:'';display:block;height:0;line-height:0;visibility:hidden;clear:both}
+/*top*/
+.video_list,.video_search,.mess_list,.info_title-cont,.info_cont,.newSay_cont,.info-list,.pr-top,.pr-a,.pr-f{width:25.83333rem;margin:0 auto;}
+.home-top{background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/bg/index.png) no-repeat;background-size: 7.5rem;background-position: 0 -7.15rem; left: 0; top: 0;height:.9rem; width: 100%; z-index: 20;position: fixed;display: block;}            
+.logo_cont{position: absolute;width:3rem;height: 0.6rem;;top:.16rem;left:.34rem;padding-left:.8rem;}
+.logo_img{position: absolute;top: 0;left: 0;display: block;width:.6rem;height:.6rem;background-image: url(//game.gtimg.cn/images/yxzj/m/m201706/images/bg/index.png);background-size: 7.5rem;background-position: 0 -6.16rem;}
+.logo_title h1{font-size:0.26rem;line-height:.34rem;color:#ffffff;}
+.logo_title p{font-size:0.16rem;color:#666;}
+.home-top .download{position: absolute;width:1.2rem;height:.48rem;top:.18rem;right:.32rem;}
+.home-top .download a{display:block;width: 100%;height: 100%;background-image: url(//game.gtimg.cn/images/yxzj/m/m201706/images/bg/index.png);background-size: 7.5rem;background-position: -1.18rem -6.18rem;}
+
+/*Ò³½Å*/
+.home_bottom {background: #db9e3f;height: 0.84rem;width: 100%;background-size: 100% auto;font-size: 0;z-index: 10;margin-top: .9rem;}
+.home_bottom a {position: relative;width: 100%;text-align: center;overflow: hidden;height: 100%;display: inline-block;color: #fff;font-size: 0.26rem;text-indent: 0;}
+.home_bottom ul{height:100%;}
+.home_bottom ul li{width: 33.33333%;height: 0.84rem;float: left;line-height: 0.84rem;}
+.home_bottom .currentL a:after {left: 50%;margin-left: -0.25rem;}
+.home_bottom li:nth-child(2).currentL a:after,.home_bottom li:nth-child(3).currentL a:after{width: 1rem;margin-left: -0.5rem;}
+.currentL {background: none;}
+.currentL a:after{content: '';position: absolute;display: inline-block;width: 0.5rem;height: 3px;background: #fff;left: 0;top: 0.6rem;}
+.home_bottom.fix-bottom {position: fixed;top: 0px;transition: transform .3s ease-in-out;transform: translateY(45px);z-index: 9;}
+
+#main-nav a {color: #fff;}
+#main-nav a:visited {color: #fff;}
+
+.mask{background:#000;position: fixed; left:0; right: 0; top: 0; bottom: 0;z-index:50; display:none;}
+.mask-box{width: 100%;height: 252px;position: absolute;top: 50%;left:0;margin-top: -119px;}
+.mask-pic{width: 154px;height: 216px;margin: 0 auto;text-align: center;}
+.mask p{font-size:20px;color:#a39772;overflow: hidden;text-align: center;}
+.mask p em{width: 25px;height: 25px;border-radius: 100%;border: 2px solid #a39772;display: inline-block;text-align: center;line-height: 25px}
+.mask p span{width:350px;display:inline-block;text-align:center;height: 25px;line-height: 25px;padding-left: 10px;}
+.mask i{width: 154px;height: 216px;background: url(//game.gtimg.cn/images/yxzj/m/m201706/images/bg/index.png) no-repeat;background-size: 750px; background-position: -566px -454px; display: block;margin: 0 auto;-webkit-animation: maskAni 1.5s ease infinite alternate;animation: maskAni 1.5s ease infinite alternate;}
+@-webkit-keyframes maskAni{
+    0% {-webkit-transform:rotate(-90deg);}
+    30% {-webkit-transform:rotate(-90deg);}
+    70%{-webkit-transform:rotate(0deg);}
+    100% {-webkit-transform:rotate(0deg);}
+}
+
+.slide {position: relative;overflow: hidden;}
+.slide .controller {width: 100%;text-align: right;overflow: hidden;position: absolute;top:2.7rem;right:0.12rem;}
+.slide  ul.controller li {width:0.17rem;height: 0.17rem;display: inline-block;margin-right:0.2rem;line-height:999px;overflow: hidden;border-radius: 2px;background: #fff;}
+.slide  ul.controller li.current {background: #4b67af;}
+
+.slide-container .slide-wrapper {width: 100%;height: 100%;margin: 0 auto;}
+
+.slide-container {position: relative;width: 100%;height: 100%;overflow: hidden;padding-bottom: 0.2rem;}
+.slide-container .slide-content {width: 100%;height: 100%;margin: 0.3rem auto 0;}
+.slide-container .slide-nav {overflow: hidden;}
+.slide-container .slide-nav a {position: relative;font-size: 0.26rem;color: #343440;display: inline-block;width: 100%;}
+.slide-container .slide-nav .currentL a {color: #db9e3f;}
+.slide-container .slide-nav .currentL a:after {background: #db9e3f;top: auto;bottom: -0.02rem;}
+.slide-container .slide-nav li {float: left;line-height: 0.46rem;}
+.slide-container .slide-nav li:last-child {margin-right: 0;}
+.slide-container .slide-item {width: 100%;overflow: hidden;float: left;}
+.slide .controller {width: 100%;text-align: right;overflow: hidden;position: absolute;top:2.7rem;right:0.12rem;}
+.slide  ul.controller li {width:0.17rem;height: 0.17rem;display: inline-block;margin-right:0.2rem;line-height:999px;overflow: hidden;border-radius: 2px;background: #fff;}
+.slide  ul.controller li.current {background: #4b67af;}
+
+.slide-nav .now{color: #db9e3f;}
+.slide-nav .now:after {background: #db9e3f;top: auto;bottom: -0.02rem;}
+
+iframe {display: none!important;height: 0;}

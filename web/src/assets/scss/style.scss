@@ -1,0 +1,207 @@
+@import "./variable";
+// reset
+*{
+    box-sizing: border-box;
+}
+html{
+    font-size: 13px;
+}
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height:1.3em;
+    -webkit-font-smoothing:antialiased;
+    background-color:#f1f1f1;
+}
+p{
+    line-height: 1.5rem;
+}
+a{
+    color:#999;
+    text-decoration: none;
+}
+
+//colors
+@each $colorKey,$color in $colors{
+    .text-#{$colorKey}{
+        color:$color
+    }
+    .bg-#{$colorKey}{
+        background-color:$color;
+    }
+}
+
+//text align
+@each $var in (left,center,right){
+    .text-#{$var}{
+        text-align: $var !important;   
+    }
+}
+
+//font size
+@each $sizeKey,$size in $font-sizes{
+    .fs-#{$sizeKey}{
+        font-size:$size * $base-font-size;
+    }
+}
+
+//flex
+.d-flex{
+    display: flex;
+}
+@each $key,$value in $flex-jc{
+    .jc-#{$key}{
+        justify-content: $value;
+    }
+} 
+@each $key,$value in $flex-ai{
+    .ai-#{$key}{
+        align-items: $value;
+    }
+} 
+//从上到下flex布局
+.flex-column{
+    flex-direction: column;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.flex-1{
+    flex:1;
+}
+.flex-grow-1{
+    flex-grow: 1;
+}
+
+//spacing
+//m-0
+@each $typeKey,$type in $spacing-types{
+    @each $sizeKey,$size in $spacing-sizes{
+        .#{$typeKey}-#{$sizeKey}{
+            #{$type}:$size * $spacing-base-size;
+        }
+    }
+} 
+
+//mt-1
+@each $typeKey,$type in $spacing-types{
+    @each $directionKey,$direction in $spacing-directions{
+        @each $sizeKey,$size in $spacing-sizes{
+            .#{$typeKey}#{$directionKey}-#{$sizeKey}{
+                #{$type}-#{$direction}:$size * $spacing-base-size;
+            }
+        }
+    }
+}
+
+//mx-0 my-0
+@each $typeKey,$type in $spacing-types{
+    @each $sizeKey,$size in $spacing-sizes{
+        .#{$typeKey}x-#{$sizeKey}{
+            #{$type}-right:$size * $spacing-base-size;
+            #{$type}-left:$size * $spacing-base-size;
+        }
+        .#{$typeKey}y-#{$sizeKey}{
+            #{$type}-top:$size * $spacing-base-size;
+            #{$type}-bottom:$size * $spacing-base-size;
+        }
+    } 
+}
+
+//button
+.btn{  
+    border:none;
+    border-radius:0.1538rem;
+    font-size:map-get($font-sizes,'sm') * $base-font-size;
+    padding:0.4rem 0.6rem;
+    i{
+        color:map-get($map: $colors, $key: 'primary');
+        align-items:center;
+    }
+    &.btn-lg{
+        display: flex;
+        justify-content:center ;
+        background-color: map-get($map: $colors, $key: 'light');
+        padding:0.6rem;
+        border:1px solid $border-color;
+    }
+}
+//nav
+.nav{
+    display:flex;
+    .nav-item{
+        &.nav-inverse{
+            border-bottom: 3px solid transparent;
+            padding-bottom:0.2rem;
+            &.active{
+                color:map-get($map: $colors, $key: 'white');
+                border-bottom-color:map-get($map: $colors, $key: 'white');
+            }
+        }
+    }
+    .nav-item{
+        border-bottom: 3px solid transparent;
+        padding-bottom:0.2rem;
+        &.active{
+            border-bottom-color:map-get($map: $colors, $key: 'primary');
+            color:map-get($map: $colors, $key: 'primary')
+        }
+    }
+}
+
+//width,height
+.w-100{
+    width:100%;
+}
+.h-100{
+    height: 100%;
+}
+
+//sprite
+.sprite{
+    background: url(../images/index.png) no-repeat 0 0;
+    background-size:28.8462rem;
+    display: inline-block;
+    &.sprite-news{
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 63.546% 15.517%;
+    }
+    &.sprite-arrow{
+        width: 0.7692rem;
+        height: 0.7692rem;
+        background-position: 38.577% 52.076%;
+    }
+}
+
+//text-ellipsis
+.text-ellipsis{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+    white-space: nowrap;    //设置不会换行
+}
+
+@each $direction in (top,bottom,right,left){
+    .border-#{$direction}{
+        border-#{$direction}:1px solid $border-color;
+    }
+}
+
+//skill active
+.skills{
+    img{
+        border:3px solid transparent;
+        &.active{
+            border-color:map-get($map: $colors, $key: 'primary');
+            border-radius: 50%;
+        }
+    }
+}
+
+//items
+.items {
+    img {
+      border-radius: 50%;
+    }
+  }

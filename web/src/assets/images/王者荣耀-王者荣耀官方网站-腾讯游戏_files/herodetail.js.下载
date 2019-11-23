@@ -1,0 +1,789 @@
+var G_NewsDetail = 'newCont.shtml';
+var G_Detail = 'detail.shtml';
+var G_IsGo = true;
+var G_Go = 'detail.shtml';
+var G_biz = 18;
+var G_Source = 'web_m';
+var Type = "all";
+var TypeId = 0;
+var order = "sIdxTime";
+var videoPage = 1;
+var videoTotalPage = 1;
+var articlePage = 1;
+var articleTotalPage = 1;
+var PageSize = 6;
+var NewsSize = 9;
+var tab1Init = false;
+var tab2Init = false;
+
+var locationRule = {
+    '1': '战士',
+    '2': '法师',
+    '3': '坦克',
+    '4': '刺客',
+    '5': '射手',
+    '6': '辅助'
+};
+//heroid:tagid
+var itagObj = {
+    '194': '1625',
+    '198': '1626',
+    '187': '835',
+    '149': '836',
+    '175': '837',
+    '171': '838',
+    '113': '839',
+    '168': '840',
+    '108': '841',
+    '114': '842',
+    '105': '843',
+    '120': '844',
+    '135': '845',
+    '144': '847',
+    '193': '1285',
+    '180': '849',
+    '178': '850',
+    '163': '851',
+    '183': '852',
+    '126': '853',
+    '140': '854',
+    '123': '855',
+    '134': '856',
+    '139': '858',
+    '129': '859',
+    '128': '860',
+    '166': '861',
+    '167': '862',
+    '117': '863',
+    '107': '864',
+    '130': '928',
+    '170': '929',
+    '179': '1629',
+    '182': '865',
+    '190': '866',
+    '157': '867',
+    '141': '868',
+    '121': '869',
+    '156': '870',
+    '142': '871',
+    '109': '872',
+    '119': '873',
+    '152': '874',
+    '115': '875',
+    '136': '876',
+    '106': '877',
+    '124': '878',
+    '127': '879',
+    '148': '880',
+    '110': '881',
+    '196': '1295',
+    '199': '1654',
+    '192': '882',
+    '177': '883',
+    '132': '884',
+    '174': '885',
+    '173': '886',
+    '112': '889',
+    '111': '890',
+    '133': '891',
+    '169': '892',
+    '189': '1199',
+    '501': '1636',
+    '176': '1754',
+    '191': '893',
+    '186': '894',
+    '184': '895',
+    '118': '896',
+    '195': '1368',
+    '131': '897',
+    '162': '898',
+    '153': '899',
+    '154': '900',
+    '150': '901',
+    '146': '902',
+    '116': '903',
+    '502': '1755',
+    '197': '1823',
+    '503': '1858',
+    '504': '1856',
+    '125': '2568',
+    '510': '2569',
+    '137': '2604',
+    '509': '2607',
+    '508': '2623',
+    '312': '2639',
+    '507': '2646',
+    '513': '2647',
+    '515': '2656',
+    '511': '2657',
+    '529': '2673',
+    '505': '2924',
+    '506': '2934',
+    '522': '3001',
+    '518': '3504',
+    '523': '3047'
+};
+
+var heroName = $('.hero-name').text();
+var urlArr = window.location.href.split('/');
+var heroId = urlArr[urlArr.length - 1].split('.')[0];
+
+function commonSlide(_container, _variable, _playTo) {
+    this.container = _container;
+    this.variable = _variable || false;
+    this.slide;
+    this._playTo = _playTo;
+    this.isFirst = true;
+    this.init();
+    this.timeout;
+}
+
+commonSlide.prototype = {
+    init: function () {
+        var self = this;
+        self.slide = new mo.Slide({
+            target: Zepto(self.container + ' .slide-item'),
+            direction: 'x',
+            playTo: self._playTo,
+            event: {
+                'init': function () {
+                    Zepto(self.container + ' .slide-nav').on('click', 'li', function () {
+                        var index = $(this).index();
+                        self.slide.playTo(index);
+                    });
+                },
+                'beforechange': function () {
+                    var index = 0;
+                    if (this.curPage) {
+                        index = this.curPage;
+                    }
+                    Zepto(self.container + ' .slide-nav li').eq(index).addClass('current').siblings().removeClass('current');
+
+                    switch (index) {
+                        case 0:
+                            if (!tab1Init) {
+                                tab1Init = true;
+                                init();
+                                formatLocation();
+                                runSkin();
+                                upSkill();
+                                getZhsKill();
+                                initEquipment();
+                                initMingwen();
+                                if (!tab2Init) {
+                                    tab2Init = true;
+                                    initStrategy();
+                                }
+                            }
+                            break;
+                        case 1:
+                            if (!tab2Init) {
+                                tab2Init = true;
+                                initStrategy();
+                            }
+                            break;
+                        default:
+                            return false;
+                    }
+                },
+                'change': function () {
+                    clearTimeout(self.timeout);
+                    if (self.variable) {
+                        var currHeight = Zepto(self.container + ' .slide-content .slide-item').eq(self.slide.curPage).height();
+                        if (self.isFirst) {
+                            self.isFirst = false;
+                            Zepto(self.container).height(currHeight + 28);
+
+                            self.timeout = setTimeout(function () {
+                                currHeight = Zepto(self.container + ' .slide-content .slide-item').eq(self.slide.curPage).height();
+                                Zepto(self.container).height(currHeight + 28);
+                            }, 500);
+                        } else {
+                            Zepto(self.container).height(currHeight + 28);
+                        }
+                    }
+                }
+            }
+        });
+
+        // self.bind();
+    }
+}
+
+var formatLocation = function () {
+    var locationId = $('.hero-location').data('herotype'),
+        locationArr = locationId.split('/'),
+        result = '';
+
+    if (locationArr[1] == 'undefined' || locationArr[1] == '') {
+        result = locationRule[locationArr[0]];
+    } else {
+        result = locationRule[locationArr[0]] + '/' + locationRule[locationArr[1]];
+    }
+    $('.hero-location').text(result);
+};
+
+var runSkin = function () {
+    var $skin = $('.hero-skin'),
+        skinList = $skin.data('imgname'),
+        skinArr = skinList.split('|');
+
+    $('.hero-skin').append(skinArr.length);
+};
+
+//制约关系
+var runRelate = function () {
+    var relatelist = $('.rela-list'),
+        surl = '//game.gtimg.cn/images/yxzj/img201606/heroimg/';
+
+    for (var i = 0; i < relatelist.length; i++) {
+        var shtml = '';
+        (function (idx) {
+            var relatename = $(relatelist[idx]).data('relatename').split('|');
+            var relatedesc = $(relatelist[idx]).data('relatedesc').split('|');
+            for (var j = 0; j < relatename.length; j++) {
+                shtml += '<li>', +'<a href="' + relatename[j] + '.shtml">', +'<img src="' + surl + relatename[j] + '/' + relatename[j] + '.jpg" alt="">', +'</a>', +'<p class="rela-text">' + relatedesc[j] + '</p>' +
+                    '</li>';
+            }
+            $(relatelist[idx]).html(shtml);
+        })(i);
+    }
+};
+
+var defaultHeight = 150;
+var slideHeight = $('.content-hero').height();
+
+var init = function () {
+    var history = $('.brf .hero-story').text().trim();
+
+    if (history == 'undefined' || history == '') {
+        $('.brf').remove();
+    }
+
+    var skillNo5 = $(".plus-box").eq(4).find(".plus-name").text();
+    if (skillNo5 == "undefined" || skillNo5 == "") {
+        $(".plus-tab li").eq(4).remove();
+        $(".plus-content li").eq(4).remove();
+    }
+
+    $('.more-btn').on('click', function () {
+        var $this = $(this),
+            $story = $this.siblings('.autom').children('.hero-story'),
+            $content = $story.children('p'),
+            contentHeight = $content.height(),
+            diffHeight = contentHeight - defaultHeight;
+
+        if ($this.hasClass('open')) {
+            $this.removeClass('open');
+            $story.height(defaultHeight);
+            $('.content-hero').height($('.content-hero').height() - diffHeight);
+            $this.text('展开全部');
+        } else {
+            $this.addClass('open');
+            $story.height(contentHeight);
+            $('.content-hero').height($('.content-hero').height() + diffHeight);
+            $this.text('收起');
+        }
+
+    });
+
+    var $skinlink = $('.hero-skin'),
+        imgname = $skinlink.data('imgname'),
+        ename = $skinlink.data('name');
+
+    $skinlink.attr('href', '//pvp.qq.com/m/m201706/herodetail/skin.shtml?imgname=' + escape(imgname) + '&name=' + ename);
+
+};
+
+var upSkill = function () {
+    // $.ajax({
+    //     type: "get",
+    //     url: "//pvp.qq.com/web201605/js/ming.json",
+    //     dataType: "json",
+    //     contentType: "application/json; charset=utf-8",
+    //     success: function(data) {
+    //         RunSugg(data);
+    //     },
+    //     error: function(err) {
+    //         // alert(err)
+    //     }
+    // });
+    // $('.upskill')
+    var skillArr = [];
+
+    $('.plus-name').each(function (i, el) {
+        var $el = $(el),
+            skillId = $el.data('skillid'),
+            skillName = $el.text();
+
+        skillArr.push([skillId, skillName]);
+    });
+
+    $('.upskill').each(function (i, el) {
+        var $this = $(el),
+            id = $this.data('upskill');
+
+        $.each(skillArr, function (i, val) {
+            if (val[0] == id) {
+                $this.text(val[1]);
+            }
+        });
+    })
+};
+
+var getZhsKill = function () {
+    $.ajax({
+        type: "get",
+        url: "//pvp.qq.com/web201605/js/summoner.json",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            runSkill(data);
+        },
+        error: function (err) {
+            // alert(err)
+        }
+    });
+};
+
+// 生成召唤师技??
+var runSkill = function (skillList) {
+    var skillArray = new Array(),
+        shtml = '',
+        dataskill = $("#skill3").data('skill'),
+        skillArray = dataskill.length > 1 ? dataskill.split('|') : dataskill;
+    for (var i = 0; i < skillArray.length; i++) {
+        $.each(skillList, function () {
+            if (this.summoner_id == skillArray[i]) {
+                var bskin = "//game.gtimg.cn/images/yxzj/img201606/summoner/" + this.summoner_id + ".jpg";
+                shtml += '<div class="osal-box l"><img src="' + bskin + '" alt=""><span class="osal-p2">' + this.summoner_name + '</span></div>';
+            }
+        })
+
+    };
+    $("#skill3").html(shtml);
+};
+
+//出装
+var initEquipment = function () {
+    $.ajax({
+        type: "get",
+        url: "//pvp.qq.com/web201605/js/item.json",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            runItem(data);
+        },
+        error: function (err) {
+            // alert(err)
+        }
+    });
+};
+
+var runItem = function (data) {
+    var equiplist = $('.equip-list'),
+        surl = '//game.gtimg.cn/images/yxzj/img201606/itemimg/';
+    for (var i = 0; i < equiplist.length; i++) {
+        var shtml = '';
+        (function (idx) {
+            var dataItem = $(equiplist[idx]).data('item'),
+                equipname = new Array(),
+                len = dataItem.length;
+            if (len > 1) {
+                equipname = dataItem.split('|');
+            } else {
+                equipname.push(dataItem);
+            }
+            for (var j = 0; j < equipname.length; j++) {
+                $.each(data, function () {
+                    if (this.item_id == equipname[j]) {
+                        var item_name = this.item_name;
+                        shtml += '<li><span class="build-img"><img src="' + surl + equipname[j] + '.jpg" alt=""></span><span class="build-name">' + item_name + '</span></li>';
+                    }
+                })
+            }
+            $(equiplist[idx]).html(shtml);
+        })(i);
+    }
+};
+
+var initMingwen = function () {
+    $.ajax({
+        type: "get",
+        url: "//pvp.qq.com/web201605/js/ming.json",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            var sugglist = $('.rune-list'),
+                surl = '//game.gtimg.cn/images/yxzj/img201606/mingwen/';
+
+            for (var i = 0; i < sugglist.length; i++) {
+                var shtml = '';
+                (function (idx) {
+                    var suggname = $(sugglist[idx]).data('ming').split('|');
+
+                    for (var j = 0; j < suggname.length; j++) {
+                        $.each(data, function () {
+                            if (this.ming_id == suggname[j]) {
+                                var ming_name = this.ming_name;
+                                var ming_des = this.ming_des;
+                                shtml += '<dl class="rune-cont c">' +
+                                    '<dt><img src="' + surl + suggname[j] + '.png" alt="" /></dt>' +
+                                    '<dd><p class="rp1">' + ming_name + '</p>' +
+                                    '<p class="rp2">' + ming_des + '</p></dd></dl>';
+                            }
+                        })
+                    }
+                    $(sugglist[idx]).html(shtml);
+                })(i);
+            }
+        },
+        error: function (err) {
+            // alert(err)
+        }
+    });
+};
+
+var strategyList = [],
+    newLength = 0;
+
+var initStrategy = function () {
+    var scrollLock = false;
+
+    $(window).scroll(function () {
+        if (window.heroSlide.slide.curPage == 1) {
+            var scrollTop = $(this).scrollTop();
+            var scrollHeight = $(document).height();
+            var windowHeight = $(this).height();
+            if (scrollTop + windowHeight + 1 >= scrollHeight && !scrollLock) {
+                getVideos();
+                scrollLock = true;
+            }
+        }
+    });
+
+
+    function getTime(_time) {
+        var t = new Date(_time);
+        t = t.getTime();
+
+        return t;
+    }
+
+    function orderByTime(_arr) {
+        for (var i = 0; i < _arr.length; i++) {
+
+            for (var j = 0; j < _arr.length - i - 1; j++) {
+                var time1 = getTime(_arr[j].sCreated);
+                var time2 = getTime(_arr[j + 1].sCreated);
+
+                if (time1 < time2) {
+                    temp = _arr[j];
+                    _arr[j] = _arr[j + 1];
+                    _arr[j + 1] = temp;
+                }
+            }
+        };
+
+        return _arr;
+    }
+
+    function getNewer() {
+        strategyList = [];
+        $.ajax({
+            type: "GET",
+            url: "//ams.qq.com/wmp/data/js/v3/WMP_PVP_WEBSITE_NEWBEE_DATA_V1.js",
+            dataType: "jsonp",
+            jsonpCallback: "newbee_hero_list_callback",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                var newsList = data.news[heroName],
+                    videoList = data.video[heroName];
+
+                if (videoList != null) {
+                    strategyList = strategyList.concat(videoList);
+                }
+                if (newsList != null) {
+                    strategyList = strategyList.concat(newsList);
+                }
+                // newLength = 2;
+                newLength = strategyList.length;
+                getVideos();
+            },
+            error: function (err) {}
+        });
+    }
+    // getNewer();
+
+    function getVideos() {
+        $.ajax({
+            type: 'get',
+            async: false,
+            url: '//ams.qq.com/wmp/data/js/v3/WMP_PVP_WEBSITE_NEWBEE_DATA_V1.js',
+            dataType: 'jsonp',
+            jsonp: 'callbackparam',
+            jsonpCallback: 'newbee_hero_list_callback',
+            success: function (json) {
+                var videos = json.video[self.heroName];
+                videos.reverse();
+                strategyList = videos.slice(0, 2);
+
+                if (strategyList.length > 1) {
+                    if (parseInt(strategyList[0].iTotalPlay) < parseInt(strategyList[1].iTotalPlay)) {
+                        strategyList.reverse();
+                    }
+                }
+                // $('#hero-strategy-video').html(self.pushVideoData(videos, self.PageSize, 'newssearch' + self.Type, self.TypeId));
+                getOthers();
+            },
+            error: function () {
+                console.log('fail');
+            }
+        });
+        //获取英雄视频
+        // QueryParentTypeInfo(function (data) {
+        //     QueryTypeInfo(function (typeObj) {
+        //         var RetHTML = '';
+        //         for (var x in data) {
+        //             var subType = typeObj['typelist_' + data[x].iType];
+        //             for (var y in subType) {
+        //                 if (subType[y].sName == cname) {
+        //                     Type = 'iSubType';
+        //                     TypeId = subType[y].iType;
+
+        //                     if (videoPage <= videoTotalPage) {
+        //                         QuerySearchList(videoPage, PageSize, order, Type, TypeId, function (data) {
+        //                             if (data.status == 0) {
+        //                                 videoTotalPage = data.msg.totalpage;
+        //                                 strategyList = strategyList.concat(data['msg']['result']);
+        //                                 videoPage++;
+        //                                 getArticles();
+        //                             } else {
+        //                                 $('.video-u1').html(data.msg);
+        //                             }
+        //                         });
+        //                     } else {
+        //                         getArticles();
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     });
+        // });
+    }
+
+    getVideos();
+
+    function getOthers() {
+        $.ajax({
+            type: 'get',
+            async: false,
+            url: '//ams.qq.com/wmp/data/js/v3/WMP_PVP_WEBSITE_DATA_18_V3.js',
+            dataType: 'jsonp',
+            jsonp: 'callbackparam',
+            jsonpCallback: 'web_hero_list_v3',
+            success: function (json) {
+                var heroTag = itagObj[heroId];
+                var articleList = json[heroTag].jData;
+                strategyList = strategyList.concat(articleList);
+                $('.strategy-info').html(PushStrategyData(strategyList));
+                $('.load-more a').text('全部加载完成');
+            },
+            error: function () {
+                console.log('fail');
+            }
+        });
+    }
+
+    //获取英雄攻略
+    function getArticles() {
+        QueryNewsParentTypeInfo(function (data) {
+            QueryNewsTypeInfo(function (typeObj) {
+                var RetHTML = '';
+                for (var x in data) {
+                    var subType = typeObj['newstypelist_' + data[x].iType];
+                    for (var y in subType) {
+                        if (subType[y].sName == cname) {
+                            Type = 'iSubType';
+                            TypeId = subType[y].iType;
+
+                            if (articlePage <= articleTotalPage) {
+                                QuerySearchNewsList(articlePage, PageSize, order, Type, TypeId, function (data) {
+                                    if (data.status == 0) {
+                                        strategyList = strategyList.concat(data['msg']['result']);
+                                        var orderList = orderByTime(strategyList);
+                                        articleTotalPage = data.msg.totalpage;
+                                        if (articlePage == 1) {
+                                            $('.strategy-info').html(PushStrategyData(strategyList));
+                                        } else {
+                                            $('.strategy-info').append(PushStrategyData(strategyList));
+                                            var strategyHeight = $('.slide-container').height();
+                                            var liHeight = $('.strategy-info li').eq(0).height() + 23;
+
+                                            $('.slide-container').height(strategyHeight + PageSize * 2 * liHeight);
+                                        }
+                                        articlePage++;
+                                        scrollLock = false;
+                                    } else {
+                                        $('.strategy-info').html(data.msg);
+                                    }
+                                });
+                            } else {
+                                $('.load-more a').text('全部加载完成');
+                                $('.slide-container').height($('.slide-item.current').height() + 38);
+                                return false;
+                            }
+                        }
+
+                    }
+                }
+            });
+        });
+    }
+
+    var linkInfoPro = function (str, iVideoId, p1, p2, p3, iMark) {
+        if (parseInt(iMark) && !/v.qq.com/.test(str)) {
+            return G_Go + '?G_Biz=' + G_biz + '&tid=' + iVideoId + '&e_code=' + p1 + '.' + p2 + '.' + p3;
+        }
+        if (iVideoId != 0) {
+            if (str == '' || /v.qq.com/.test(str) || /egame.qq.com/.test(str) || /detail/.test(str) || !G_IsGo) {
+                return G_Detail + '?G_Biz=' + G_biz + '&tid=' + iVideoId + '&e_code=' + p1 + '.' + p2 + '.' + p3;
+            } else {
+                return G_Go + '?G_Biz=' + G_biz + '&tid=' + iVideoId + '&e_code=' + p1 + '.' + p2 + '.' + p3;
+            }
+        } else {
+            return str;
+        }
+    };
+
+    var getQueryString = function (_str, _name) {
+        var reg = new RegExp("(^|&)" + _name + "=([^&]*)(&|$)", "i");
+        var r = _str.match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    };
+
+    var PushStrategyData = function (data) {
+        var RetHTML = '';
+        var length = data.length;
+        for (var x = 0; x < length; x++) {
+            if (data[x]['iVideoId']) {
+                var createTime = data[x]['sCreated'] || data[x]['sIdxTime'],
+                    currClass = 'raiders-vdbtn c';
+
+                if (x < newLength) {
+                    currClass += ' rec-item';
+                }
+
+
+                var _sUrl = linkInfoPro(data[x]['sUrl'], data[x]['iVideoId'], BizTypeInfo.msg[G_biz] + G_Source, 'statictypenew', 'type' + data[x]['iType']);
+
+                var _anchor = data[x]['iVideoId'];
+
+                RetHTML += '<li id="' + _anchor + '">' +
+                    '<a href="//pvp.qq.com/m/m201606/' + _sUrl + '" title="' + data[x]['sTitle'] + '" class="' + currClass + '" onclick="PTTSendClick(\'strategy\',\'video\',\'攻略\');storeStrategy(' + _anchor + ');">' +
+                    '<div class="vdbtn-left">' +
+                    '<img src="' + data[x]['sIMG'].replace('http:', 'https:') + '" alt="">' +
+                    '<span>点击播放</span>' +
+                    '</div>' +
+                    '<div class="vdbtn-right">' +
+                    '<p>' + data[x]['sTitle'] + '</p>' +
+                    '<div class="rd-video-info c">' +
+                    '<span class="rd-video-spr rd-video-fre">' + data[x]['iTotalPlay'] + '</span>' +
+                    '<span class="rd-video-spr rd-video-day">' + createTime.substr(0, 10) + '</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '</a>' +
+                    '</li>';
+            } else {
+                var createTime = data[x]['sCreated'] || data[x]['sIdxTime'],
+                    currClass = 'raiders-vdbtn c';
+
+                if (x < newLength) {
+                    currClass += ' rec-item';
+                }
+
+                var _anchor = data[x]['iNewsId'];
+
+                RetHTML += '<li id="' + _anchor + '">' +
+                    '<a href="//pvp.qq.com/m/m201606/newCont.shtml?G_Biz=18&tid=' + _anchor + '" class="' + currClass + '" onclick="PTTSendClick(\'strategy\',\'video\',\'攻略\');storeStrategy(' + _anchor + ');">' +
+                    '<div class="vdbtn-left">' +
+                    '<img src="' + data[x]['sIMG'].replace('http:', 'https:') + '" alt="">' +
+                    '</div>' +
+                    '<div class="vdbtn-right">' +
+                    '<p>' + data[x]['sTitle'] + '</p>' +
+                    '<div class="rd-video-info c">' +
+                    '<span class="rd-video-spr rd-video-fre">' + data[x]['iTotalPlay'] + '</span>'
+                    // +          '<span class="rd-video-spr rd-video-tm">' + data[x]['iTime'] + '</span>'
+                    +
+                    '<span class="rd-video-spr rd-video-day">' + createTime.substr(0, 10) + '</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '</a>' +
+                    '</li>';
+            }
+        }
+        return RetHTML;
+    };
+};
+
+var storeStrategy = function (_data) {
+    var html = $('.strategy-info').html();
+    sessionStorage.setItem('heroAnchor', _data);
+    sessionStorage.setItem('videoPage', videoPage);
+    sessionStorage.setItem('articlePage', articlePage);
+    sessionStorage.setItem('dataHTML', html);
+    sessionStorage.setItem('scrollTop', $('#' + _data).offset().top - 50);
+}
+
+function showShareDialog() {
+    $('html,body').addClass('pop-on');
+
+    $('.share-guide').on('click', function () {
+        $('html,body').removeClass('pop-on');
+    });
+}
+
+function getEnv() {
+    var ua = navigator.userAgent.toLowerCase();
+    if (/micromessenger(\/[\d\.]+)*/.test(ua)) {
+        return "weixin"
+    } else if (/qq\/(\/[\d\.]+)*/.test(ua) || /qzone\//.test(ua)) {
+        return "qq";
+    } else {
+        return "web";
+    }
+}
+
+$(function () {
+    var _env = getEnv();
+    if (_env == 'weixin' || _env == '11') {
+        $('.hero-share').show();
+    }
+
+    var slideStart = 0;
+
+    loadScript("//ossweb-img.qq.com/images/js/zepto/zepto.min.js", function () {
+        loadScript("//ossweb-img.qq.com/images/js/motion/slide.v2.0.min.js", function () {
+            if (sessionStorage.getItem('heroAnchor') != null) {
+                slideStart = 1;
+                videoPage = sessionStorage.getItem('videoPage');
+                articlePage = sessionStorage.getItem('articlePage');
+                var itemId = sessionStorage.getItem('heroAnchor');
+                $('.strategy-info').html(sessionStorage.getItem('dataHTML'));
+
+                setTimeout(function () {
+                    $('html,body').animate({
+                        scrollTop: sessionStorage.getItem('scrollTop')
+                    }, 100);
+                }, 0);
+            }
+            window.heroSlide = new commonSlide('.content-hero', true, slideStart);
+
+            var SkillsPlusTab = new mo.Tab({
+                target: Zepto('#PlusTab .content li'),
+                controller: Zepto('#PlusTab .controller li')
+            });
+        })
+    })
+})
